@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="{{ $.Site.LanguageCode | default " en" }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{{.Site.Title}}</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <link rel="shortcut icon" href="/images/favicon/favicon.ico">
+    <link type="text/css" rel="stylesheet" href="/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/custom.css">
+</head>
+
+<body id="page-top" data-spy="scroll" data-target="#navbarCollapse">
+
+<nav class="nav-wrapper">
+    <div class="nav">
+        <div class="nav-left">
+            {{ if .Params.logo }}
+            {{ $header_logo := (trim $.Params.logo "/") | absURL }}
+            <a class="nav-image" href="https://kreinn.de">
+                <img class="image" src="{{ $header_logo }}" alt="Kreinn Logo">
+            </a>
+            {{ end }}
+        </div>
+        <a href="javascript:void(0);" class="nav-responsive" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </a>
+        {{ if .Params.nav_links }}
+        <ul id="nav-menu" class="nav-right">
+            <li class="nav-item">
+                <a class="nav-call" href="tel:{{ .Params.telephone }}">
+                    <span class="nav-call-text">Rufen Sie uns an!</span>
+                    <i class="fa fa-phone icon"></i>
+                    <span>{{ .Params.telephone }}</span>
+                </a>
+            </li>
+            {{ range .Params.nav_links }}
+            <li class="nav-item">
+                <a href="#{{ .url }}">{{ .text }}</a>
+            </li>
+            {{ end }}
+        </ul>
+        {{ end }}
+    </div>
+</nav>
+
+<section id="services" class="scrollspy lightgrey">
+    <div class="container">
+        <h2 class="title">Unsere Services</h2>
+        {{ range $index, $service := .Params.services }}
+        {{ $service_image := (trim $service.service_image "/") | absURL }}
+        {{ if (mod $index 2) eq 0 }}
+        <div class="service-container">
+            <div class="service-image" style="background: center no-repeat url('{{ $service_image }}'); background-size: cover">
+<!--                <img src="{{ $service_image }}" alt="Bild zu {{ $service.service_title }}">-->
+            </div>
+            <div class="service-content">
+                <h3 class="service-title">{{ $service.service_title }}</h3>
+                <p class="service-text">{{ $service.service_description }}</p>
+            </div>
+        </div>
+        {{ else }}
+        <div class="service-container">
+            <div class="service-content">
+                <h3 class="service-title">{{ $service.service_title }}</h3>
+                <p class="service-text">{{ $service.service_description }}</p>
+            </div>
+            <div class="service-image" style="background: center no-repeat url('{{ $service_image }}'); background-size: cover">
+<!--                <img src="{{ $service_image }}" alt="Bild zu {{ $service.service_title }}">-->
+            </div>
+        </div>
+        {{ end }}
+        {{ end }}
+    </div>
+</section>
+
+<section id="team" class="scrollspy">
+    <div class="container">
+        <h2 class="title">Unser Team</h2>
+        <div class="team-container">
+            {{ range .Params.team }}
+            {{ $image := (trim .image "/") | absURL }}
+            <div class="team-card">
+                <h2 class="team-title">{{ .name }}</h2>
+                <img src="{{ $image }}" alt="Bild von {{ .name }}" class="team-image">
+                <p>Fachgebiet: {{ .expertise }}</p>
+                <p>Erfahrung: {{ .experience }}</p>
+                <div class="team-quote">
+                    <p>{{ .quote }}</p>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<section id="referenzen" class="scrollspy lightgrey">
+    <div class="container">
+        <h2 class="title">Unsere Referenzen</h2>
+        <div class="reference-container">
+            {{ range .Params.references }}
+            {{ $logo := (trim .logo "/") | absURL }}
+            <div class="reference-item">
+                <a href="{{ .url }}">
+                    <img class="reference-image{{ if .class }} {{ .class }}{{ end }}" src="{{ $logo }}"
+                         alt="Logo von {{ .name }}">
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<section id="kontakt" class="scrollspy">
+    <div class="container">
+        <h2 class="title">Kontakt</h2>
+        <p>Bei Fragen stehen wir Ihnen gerne per E-Mail oder Telefon zur Verfügung.</p>
+        <div class="contact-container">
+            <i class="fa fa-phone icon contact-icon"></i>
+            <p class="contact-item">Telefon: <a href="tel:{{ .Params.telephone }}">{{ .Params.telephone }}</a></p>
+            <p class="contact-item">Mobil: <a href="tel:{{ .Params.mobile }}">{{ .Params.mobile }}</a></p>
+            <i class="fa fa-envelope icon contact-icon"></i>
+            <p class="contact-item">E-Mail: <a href="mailto:{{ .Params.email }}">{{ .Params.email }}</a></p>
+        </div>
+
+        <div id="map" class="map"></div>
+        <script>
+            function initMap() {
+                const address = {lat: 51.5594964, lng: 7.5893009};
+                const map = new google.maps.Map(document.getElementById('map'), {zoom: 13, center: address});
+                const marker = new google.maps.Marker({position: address, map: map});
+                infowindow = new google.maps.InfoWindow({content: '<strong>KreInn</strong><br>Rumpstraße 15<br>44319 Dortmund<br>'});
+                google.maps.event.addListener(marker, 'click', function () {
+                    infowindow.open(map, marker);
+                });
+                infowindow.open(map, marker);
+            }
+        </script>
+        <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdpVAa5L4aQx7ePtguhvOqvRmZA4sAkos&callback=initMap">
+        </script>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-container container">
+        <div class="footer-logo">
+            {{ $logo := (trim $.Params.logo "/") | absURL }}
+            <img class="image" src="{{ $logo }}">
+        </div>
+        <ul class="footer-nav">
+            {{ range .Params.footer_links }}
+            <li class="nav-item-footer">
+                <a href="{{ .url }}">{{ .text }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</footer>
+
+<!--<script type="text/javascript" src="/js/jquery.min.js"></script>-->
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/nav.js"></script>
+</body>
+</html>

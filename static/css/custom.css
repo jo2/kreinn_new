@@ -1,0 +1,292 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Hind,sans-serif;
+    margin: 80px 0 0 0;
+}
+
+.container {
+    position: relative;
+}
+
+@media (min-width: 576px) {
+    .container {
+        margin: 120px auto;
+        max-width: 565px;
+        width: 565px;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        margin: 120px auto;
+        max-width: 750px;
+        width: 750px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        margin: 120px auto;
+        max-width: 950px;
+        width: 950px;
+    }
+}
+@media (min-width: 1200px) {
+    .container {
+        margin: 120px auto;
+        max-width: 1152px;
+        width: 1152px;
+    }
+}
+@media (min-width: 1384px) {
+    .container {
+        margin: 120px auto;
+        max-width: 1344px;
+        width: 1344px;
+    }
+}
+
+.nav-wrapper {
+    background-color: white;
+    top: 0;
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    border-bottom: 2px solid #f28f56;
+}
+
+.nav {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto auto;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.nav-right {
+    list-style-type: none;
+    display: flex;
+    margin: 0;
+    padding-left: 0;
+}
+
+.nav-item {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.nav-item > a {
+    color: #515769;
+}
+
+.nav-item.is-active {
+    background-color: #eeeeee;
+}
+
+.nav-item.is-active > a {
+    color: red;
+}
+
+.nav-image {
+    font-size: 17px;
+    color: #515769;
+    height: 60px;
+}
+
+.nav-item:hover {
+    background-color: #eeeeee;
+}
+
+.nav-call {
+    color: #515769;
+}
+
+.icon {
+    color: #17bed2;
+}
+
+.nav-call-text {
+    color: orange;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-responsive {
+    display: none;
+    position: absolute;
+    padding: 15px;
+    right: 0;
+    top: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-right {
+        display: none;
+        grid-column: 1 / 3;
+    }
+    .nav-responsive {
+        display: block;
+    }
+    .nav-item {
+        width: 100%;
+        display: block;
+    }
+    .nav-right.responsive {
+        position: relative;
+        display: block;
+    }
+}
+
+.image {
+    display: block;
+    position: relative;
+    height: 60px;
+}
+
+.title {
+    font-size: 30px;
+    color: #515769;
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #515769;
+}
+
+.team-card {
+    margin: 15px;
+    width: 30%;
+    min-width: 30%;
+}
+
+.team-card > p {
+    color: #a6a7aa;
+    margin: 0;
+}
+
+.team-title {
+    text-align: center;
+    font-size: 30px;
+}
+
+.team-image {
+    border-radius: 5%;
+    height: 200px;
+    width: 200px;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.team-quote {
+    border-left: 5px solid #eee;
+    margin: 10px 0;
+    padding: 10px 10px 10px 20px;
+    font-size: 18px;
+    color: black;
+}
+
+.team-quote > p {
+    margin: 0;
+}
+
+.reference-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.reference-item {
+    width: 30%;
+    min-width: 30%;
+    margin: 15px;
+}
+
+.reference-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.img-inverted {
+    -webkit-filter: invert(1);
+    filter: invert(1);
+}
+
+.contact-item, .contact-icon {
+    font-size: 18px;
+}
+
+.contact-item {
+    margin: 0;
+    color: #81848f;
+}
+
+.contact-item > a {
+    color: #515769;
+}
+
+.contact-icon {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+.map {
+    height: 400px;
+    margin-top: 40px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-nav {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+footer {
+    border-top: 1px solid grey;
+}
+
+.nav-item-footer {
+    padding: 5px;
+    font-size: 18px;
+}
+
+.nav-item-footer > a {
+    color: #515769;
+}
+
+.service-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.service-content, .service-image {
+    min-width: 50%;
+    width: 50%;
+}
+
+.service-title {
+    color: #515769;
+    font-size: 23px;
+    margin: 30px;
+}
+
+.service-text {
+    color: gray;
+    font-size: 17px;
+    margin: 0px 30px 30px 30px;
+}
+
+section {
+    /*background-color: #eeeeee;*/
+    /*padding: 80px 0;*/
+}
